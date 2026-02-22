@@ -1,0 +1,268 @@
+
+ejemploI2C.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000001e4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000170  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000002  00800100  00800100  000001e4  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000001e4  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000214  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000080  00000000  00000000  00000254  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000944  00000000  00000000  000002d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007ab  00000000  00000000  00000c18  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000542  00000000  00000000  000013c3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000f8  00000000  00000000  00001908  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000442  00000000  00000000  00001a00  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000300  00000000  00000000  00001e42  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000060  00000000  00000000  00002142  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 55 00 	jmp	0xaa	; 0xaa <__vector_24>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a2 30       	cpi	r26, 0x02	; 2
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 a5 00 	call	0x14a	; 0x14a <main>
+  88:	0c 94 b6 00 	jmp	0x16c	; 0x16c <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <I2C_Slave_Init>:
+// Nota: el esclavo REAL necesita ISR(TWI_vect) en tu main_slave.c
+// Esto solo configura el hardware.
+
+void I2C_Slave_Init(uint8_t address)
+{
+	DDRC &= ~((1<<DDC4) | (1<<DDC5));          // SDA/SCL input
+  90:	97 b1       	in	r25, 0x07	; 7
+  92:	9f 7c       	andi	r25, 0xCF	; 207
+  94:	97 b9       	out	0x07, r25	; 7
+	PORTC &= ~((1<<PORTC4) | (1<<PORTC5));     // no pull-up internos
+  96:	98 b1       	in	r25, 0x08	; 8
+  98:	9f 7c       	andi	r25, 0xCF	; 207
+  9a:	98 b9       	out	0x08, r25	; 8
+
+	TWAR = (address << 1); // 7-bit addr
+  9c:	88 0f       	add	r24, r24
+  9e:	80 93 ba 00 	sts	0x00BA, r24	; 0x8000ba <__TEXT_REGION_LENGTH__+0x7f80ba>
+
+	// Enable TWI, ACK, interrupt, clear TWINT
+	TWCR = (1<<TWEN) | (1<<TWEA) | (1<<TWIE) | (1<<TWINT);
+  a2:	85 ec       	ldi	r24, 0xC5	; 197
+  a4:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+  a8:	08 95       	ret
+
+000000aa <__vector_24>:
+{
+	return (HUM_PINR & (1<<HUM_BIT)) ? 1 : 0;
+}
+
+ISR(TWI_vect)
+{
+  aa:	1f 92       	push	r1
+  ac:	0f 92       	push	r0
+  ae:	0f b6       	in	r0, 0x3f	; 63
+  b0:	0f 92       	push	r0
+  b2:	11 24       	eor	r1, r1
+  b4:	8f 93       	push	r24
+	uint8_t st = TWSR & 0xF8;
+  b6:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+  ba:	88 7f       	andi	r24, 0xF8	; 248
+
+	switch(st)
+  bc:	80 39       	cpi	r24, 0x90	; 144
+  be:	99 f0       	breq	.+38     	; 0xe6 <__vector_24+0x3c>
+  c0:	38 f4       	brcc	.+14     	; 0xd0 <__vector_24+0x26>
+  c2:	88 36       	cpi	r24, 0x68	; 104
+  c4:	61 f0       	breq	.+24     	; 0xde <__vector_24+0x34>
+  c6:	80 38       	cpi	r24, 0x80	; 128
+  c8:	71 f0       	breq	.+28     	; 0xe6 <__vector_24+0x3c>
+  ca:	80 36       	cpi	r24, 0x60	; 96
+  cc:	a9 f5       	brne	.+106    	; 0x138 <__vector_24+0x8e>
+  ce:	07 c0       	rjmp	.+14     	; 0xde <__vector_24+0x34>
+  d0:	80 3b       	cpi	r24, 0xB0	; 176
+  d2:	e1 f0       	breq	.+56     	; 0x10c <__vector_24+0x62>
+  d4:	88 3b       	cpi	r24, 0xB8	; 184
+  d6:	41 f1       	breq	.+80     	; 0x128 <__vector_24+0x7e>
+  d8:	88 3a       	cpi	r24, 0xA8	; 168
+  da:	71 f5       	brne	.+92     	; 0x138 <__vector_24+0x8e>
+  dc:	17 c0       	rjmp	.+46     	; 0x10c <__vector_24+0x62>
+	{
+		// Maestro quiere escribir (mandar comando motor)
+		case 0x60:
+		case 0x68:
+		TWCR = (1<<TWINT)|(1<<TWEA)|(1<<TWEN)|(1<<TWIE);
+  de:	85 ec       	ldi	r24, 0xC5	; 197
+  e0:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+		break;
+  e4:	2c c0       	rjmp	.+88     	; 0x13e <__vector_24+0x94>
+
+		case 0x80: // dato recibido
+		case 0x90:
+		motor_cmd = TWDR;   // 0 o 1
+  e6:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+  ea:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+		if(motor_cmd) MOTOR_ON();
+  ee:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+  f2:	88 23       	and	r24, r24
+  f4:	21 f0       	breq	.+8      	; 0xfe <__vector_24+0x54>
+  f6:	85 b1       	in	r24, 0x05	; 5
+  f8:	81 60       	ori	r24, 0x01	; 1
+  fa:	85 b9       	out	0x05, r24	; 5
+  fc:	03 c0       	rjmp	.+6      	; 0x104 <__vector_24+0x5a>
+		else MOTOR_OFF();
+  fe:	85 b1       	in	r24, 0x05	; 5
+ 100:	8e 7f       	andi	r24, 0xFE	; 254
+ 102:	85 b9       	out	0x05, r24	; 5
+
+		TWCR = (1<<TWINT)|(1<<TWEA)|(1<<TWEN)|(1<<TWIE);
+ 104:	85 ec       	ldi	r24, 0xC5	; 197
+ 106:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+		break;
+ 10a:	19 c0       	rjmp	.+50     	; 0x13e <__vector_24+0x94>
+volatile uint8_t tx_value = 0;
+volatile uint8_t motor_cmd = 0;
+
+static inline uint8_t read_hum(void)
+{
+	return (HUM_PINR & (1<<HUM_BIT)) ? 1 : 0;
+ 10c:	89 b1       	in	r24, 0x09	; 9
+ 10e:	82 fb       	bst	r24, 2
+ 110:	88 27       	eor	r24, r24
+ 112:	80 f9       	bld	r24, 0
+		break;
+
+		// Lectura del maestro (humedad)
+		case 0xA8:
+		case 0xB0:
+		tx_value = read_hum();
+ 114:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <tx_value>
+		TWDR = tx_value;
+ 118:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <tx_value>
+ 11c:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+		TWCR = (1<<TWINT)|(1<<TWEA)|(1<<TWEN)|(1<<TWIE);
+ 120:	85 ec       	ldi	r24, 0xC5	; 197
+ 122:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+		break;
+ 126:	0b c0       	rjmp	.+22     	; 0x13e <__vector_24+0x94>
+
+		case 0xB8:
+		TWDR = tx_value;
+ 128:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <tx_value>
+ 12c:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+		TWCR = (1<<TWINT)|(1<<TWEA)|(1<<TWEN)|(1<<TWIE);
+ 130:	85 ec       	ldi	r24, 0xC5	; 197
+ 132:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+		break;
+ 136:	03 c0       	rjmp	.+6      	; 0x13e <__vector_24+0x94>
+
+		default:
+		TWCR = (1<<TWINT)|(1<<TWEA)|(1<<TWEN)|(1<<TWIE);
+ 138:	85 ec       	ldi	r24, 0xC5	; 197
+ 13a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+		break;
+	}
+}
+ 13e:	8f 91       	pop	r24
+ 140:	0f 90       	pop	r0
+ 142:	0f be       	out	0x3f, r0	; 63
+ 144:	0f 90       	pop	r0
+ 146:	1f 90       	pop	r1
+ 148:	18 95       	reti
+
+0000014a <main>:
+
+int main(void)
+{
+	// Humedad input
+	HUM_DDR &= ~(1<<HUM_BIT);
+ 14a:	8a b1       	in	r24, 0x0a	; 10
+ 14c:	8b 7f       	andi	r24, 0xFB	; 251
+ 14e:	8a b9       	out	0x0a, r24	; 10
+	HUM_PORT |= (1<<HUM_BIT);
+ 150:	8b b1       	in	r24, 0x0b	; 11
+ 152:	84 60       	ori	r24, 0x04	; 4
+ 154:	8b b9       	out	0x0b, r24	; 11
+
+	// Motor output
+	MOTOR_DDR |= (1<<MOTOR_BIT);
+ 156:	84 b1       	in	r24, 0x04	; 4
+ 158:	81 60       	ori	r24, 0x01	; 1
+ 15a:	84 b9       	out	0x04, r24	; 4
+	MOTOR_OFF();
+ 15c:	85 b1       	in	r24, 0x05	; 5
+ 15e:	8e 7f       	andi	r24, 0xFE	; 254
+ 160:	85 b9       	out	0x05, r24	; 5
+
+	I2C_Slave_Init(SLAVE_ADDR);
+ 162:	82 e1       	ldi	r24, 0x12	; 18
+ 164:	0e 94 48 00 	call	0x90	; 0x90 <I2C_Slave_Init>
+	sei();
+ 168:	78 94       	sei
+ 16a:	ff cf       	rjmp	.-2      	; 0x16a <main+0x20>
+
+0000016c <_exit>:
+ 16c:	f8 94       	cli
+
+0000016e <__stop_program>:
+ 16e:	ff cf       	rjmp	.-2      	; 0x16e <__stop_program>
